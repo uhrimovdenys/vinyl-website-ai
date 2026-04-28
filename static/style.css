@@ -134,7 +134,6 @@ nav {
   text-align: center;
 }
 
-/* ── Місце для гіфки ── */
 .vinyl-placeholder {
   width: 280px;
   height: 280px;
@@ -151,7 +150,6 @@ nav {
   border-radius: 50%;
 }
 
-/* Заглушка якщо немає гіфки */
 .vinyl-fallback {
   display: none;
   flex-direction: column;
@@ -167,17 +165,17 @@ nav {
   text-transform: uppercase;
 }
 
-/* Якщо картинка не завантажилась */
+
 .vinyl-placeholder.no-img .vinyl-img { display: none; }
 .vinyl-placeholder.no-img .vinyl-fallback { display: flex; }
-/* Додаємо рамку-заглушку */
+
 .vinyl-placeholder.no-img {
   border: 2px dashed var(--orange-border);
   border-radius: 50%;
   background: var(--dark);
 }
 
-/* ── Текст ── */
+
 .home-eyebrow {
   font-size: 0.72rem;
   letter-spacing: 0.2em;
@@ -226,7 +224,7 @@ nav {
   justify-content: center;
 }
 
-/* ── Features strip ── */
+
 .home-features {
   display: flex;
   width: 100%;
@@ -261,9 +259,6 @@ nav {
   line-height: 1.5;
 }
 
-/* ─────────────────────────────────────
-   BUTTONS
-───────────────────────────────────── */
 .btn-main {
   background: var(--orange);
   color: #000;
@@ -303,9 +298,7 @@ nav {
 }
 .btn-outline:hover { background: var(--orange-dim); }
 
-/* ─────────────────────────────────────
-   CATALOG
-───────────────────────────────────── */
+
 .catalog-header {
   padding: 2.5rem 5%;
   border-bottom: 1px solid var(--orange-border);
@@ -440,9 +433,7 @@ nav {
   border-color: var(--orange);
 }
 
-/* ─────────────────────────────────────
-   FAQ
-───────────────────────────────────── */
+
 .faq-inner {
   max-width: 760px;
   margin: 0 auto;
@@ -495,9 +486,7 @@ nav {
   padding-bottom: 1.1rem;
 }
 
-/* ─────────────────────────────────────
-   BLOG
-───────────────────────────────────── */
+
 .blog-inner { padding: 2.5rem 5%; }
 .blog-inner .page-title { margin-bottom: 2rem; }
 
@@ -559,9 +548,7 @@ nav {
   gap: 1rem;
 }
 
-/* ─────────────────────────────────────
-   CONTACTS
-───────────────────────────────────── */
+
 .contacts-inner {
   max-width: 900px;
   margin: 0 auto;
@@ -645,9 +632,7 @@ nav {
   color: var(--orange);
 }
 
-/* ─────────────────────────────────────
-   CHATBOT
-───────────────────────────────────── */
+
 .chat-bubble {
   position: fixed;
   bottom: 1.5rem;
@@ -840,9 +825,7 @@ nav {
 }
 .chat-send:hover { background: var(--orange-light); }
 
-/* ─────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────── */
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;

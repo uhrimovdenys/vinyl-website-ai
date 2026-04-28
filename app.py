@@ -29,7 +29,6 @@ SYSTEM_PROMPT = """Ти — VinylBot, дружній асистент вініл
 - Не використовуй markdown, зірочки чи дужки у відповідях
 - Якщо не знаєш — скажи чесно і запропонуй написати на email"""
 
-# ── Аналітика (зберігається у файлі) ────────────────────
 ANALYTICS_FILE = "analytics.json"
 
 def load_analytics():
@@ -51,12 +50,10 @@ def track_request(message):
     data["total_requests"] += 1
     today = datetime.date.today().isoformat()
     data["daily"][today] = data["daily"].get(today, 0) + 1
-    # перші 30 символів як тема
     topic = message[:30].strip()
     data["topics"][topic] = data["topics"].get(topic, 0) + 1
     save_analytics(data)
 
-# ── Routes ───────────────────────────────────────────────
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -68,10 +65,8 @@ def chat():
         messages = body.get("messages", [])
         user_message = messages[-1]["content"] if messages else ""
 
-        # Аналітика
         track_request(user_message)
 
-        # Groq запит
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",  # безкоштовна модель
             messages=[{"role": "system", "content": SYSTEM_PROMPT}] + messages,
@@ -110,9 +105,5 @@ def contact():
     track_request(f"contact: {name}")
     return jsonify({"ok": True})
 
-if __name__ == "__main__":
-    print("=" * 50)
-    print("  denysvinyl.com — локальний сервер")
-    print("  http://localhost:5000")
-    print("=" * 50)
-    app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
