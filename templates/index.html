@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>denysvinyl.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geologica:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+<!-- ════════════════════════════
+     NAVIGATION
+════════════════════════════ -->
+<nav>
+  <a class="logo" href="#" onclick="showPage('home');return false">denysvinyl.com</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="showPage('home')" data-page="home">Головна</a></li>
+    <li><a onclick="showPage('catalog')" data-page="catalog">Каталог</a></li>
+    <li><a onclick="showPage('faq')" data-page="faq">FAQ</a></li>
+    <li><a onclick="showPage('blog')" data-page="blog">Блог</a></li>
+    <li><a onclick="showPage('contacts')" data-page="contacts">Контакти</a></li>
+  </ul>
+  <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════════════════════════
+     HOME
+════════════════════════════ -->
+<div class="page" id="home">
+  <div class="home-hero">
+
+    <!-- ╔══════════════════════════════════════╗
+         ║  МІСЦЕ ДЛЯ ТВОЄЇ ГІФКИ / ЗОБРАЖЕННЯ ║
+         ║  Заміни src на свій файл             ║
+         ╚══════════════════════════════════════╝ -->
+    <div class="vinyl-placeholder">
+      <img
+        src="/static/vinyl.png"
+        alt="Vinyl record"
+        class="vinyl-img"
+        onerror="this.parentElement.classList.add('no-img')"
+      />
+      <!-- Якщо гіфки немає — показується заглушка нижче -->
+      <div class="vinyl-fallback">
+        <span>🎵</span>
+        <p>vinyl.gif</p>
+      </div>
+    </div>
+
+    <div class="home-text">
+      <h1 class="home-title">
+        Вінтаж та інді<br>
+        <em>для тих, хто слухає</em>
+      </h1>
+      <p class="home-desc">
+        Кожна платівка в магазині — навмисний вибір. Вінтажні знахідки та сучасне інді, яке варто мати на полиці.
+      </p>
+      <div class="home-cta">
+        <button class="btn-main" onclick="showPage('catalog')">Переглянути каталог</button>
+        <button class="btn-outline" onclick="showPage('faq')">Часті питання</button>
+      </div>
+    </div>
+
+    <div class="home-features">
+      <div class="feature">
+        <span class="feature-icon">🕳️</span>
+        <div class="feature-title">Відібрана колекція</div>
+        <div class="feature-desc">Вінтаж та інді — тільки те, що варто слухати</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">📻</span>
+        <div class="feature-title">Програвачі</div>
+        <div class="feature-desc">Від стартового до аудіофільського рівня</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🚚</span>
+        <div class="feature-title">Доставка</div>
+        <div class="feature-desc">Нова Пошта та Укрпошта по Україні</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">↩️</span>
+        <div class="feature-title">Повернення</div>
+        <div class="feature-desc">14 днів на обмін або повернення</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     CATALOG
+════════════════════════════ -->
+<div class="page" id="catalog">
+  <div class="catalog-header">
+    <h1 class="page-title">Каталог</h1>
+    <div class="catalog-filters">
+      <button class="filter-btn active" onclick="filterProducts('all', this)">Все</button>
+      <button class="filter-btn" onclick="filterProducts('vinyl', this)">Вініл</button>
+      <button class="filter-btn" onclick="filterProducts('player', this)">Програвачі</button>
+      <button class="filter-btn" onclick="filterProducts('acc', this)">Аксесуари</button>
+    </div>
+  </div>
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+
+<!-- ════════════════════════════
+     FAQ
+════════════════════════════ -->
+<div class="page" id="faq">
+  <div class="faq-inner">
+    <h1 class="page-title">Часті питання</h1>
+    <div id="faqList"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     BLOG
+════════════════════════════ -->
+<div class="page" id="blog">
+  <div class="blog-inner">
+    <h1 class="page-title">Блог</h1>
+    <div class="blog-grid" id="blogGrid"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     CONTACTS
+════════════════════════════ -->
+<div class="page" id="contacts">
+  <div class="contacts-inner">
+
+    <div class="contacts-info">
+      <h1 class="page-title">Контакти</h1>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <div class="contact-label">Адреса</div>
+          <div class="contact-val">м. Київ, вул. Хрещатик 22<br>Пн–Сб: 10:00–20:00</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div>
+          <div class="contact-label">Телефон</div>
+          <div class="contact-val"><a href="tel:+380991234567">+38 099 123 45 67</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-val"><a href="mailto:info@denysvinyl.com">info@denysvinyl.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📱</span>
+        <div>
+          <div class="contact-label">Соцмережі</div>
+          <div class="contact-val">Instagram · Telegram · Facebook</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contacts-form-side">
+      <h2 class="form-title">Написати нам</h2>
+      <div class="contact-form">
+        <label for="cName">Ім'я</label>
+        <input type="text" id="cName" placeholder="Ваше ім'я"/>
+        <label for="cEmail">Email</label>
+        <input type="email" id="cEmail" placeholder="email@example.com"/>
+        <label for="cMsg">Повідомлення</label>
+        <textarea id="cMsg" placeholder="Ваше питання або побажання..."></textarea>
+        <button class="btn-main" onclick="submitContact()">Надіслати</button>
+        <div id="formMsg" class="form-result" style="display:none"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     CHATBOT
+════════════════════════════ -->
+<button class="chat-bubble" id="chatBubble" onclick="toggleChat()" title="Запитати бота">
+  💬
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-head">
+    <div class="chat-avatar">🎵</div>
+    <div class="chat-head-info">
+      <div class="chat-name">VinylBot</div>
+      <div class="chat-status">● Онлайн — допоможу з вибором</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-msgs" id="chatMsgs"></div>
+
+  <div class="chat-quick" id="quickReplies">
+    <button class="quick-btn" onclick="quickAsk('Які програвачі є в наявності?')">🎚️ Програвачі</button>
+    <button class="quick-btn" onclick="quickAsk('Як здійснюється доставка?')">🚚 Доставка</button>
+    <button class="quick-btn" onclick="quickAsk('Умови повернення?')">↩️ Повернення</button>
+    <button class="quick-btn" onclick="quickAsk('Порадь вініл для початківця')">🎵 Для новачка</button>
+  </div>
+
+  <div class="chat-input-row">
+    <input
+      class="chat-input"
+      id="chatInput"
+      placeholder="Запитати..."
+      onkeydown="if(event.key==='Enter') sendMsg()"
+    />
+    <button class="chat-send" onclick="sendMsg()">➤</button>
+  </div>
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
