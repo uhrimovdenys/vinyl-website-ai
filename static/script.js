@@ -10,7 +10,7 @@
 const PRODUCTS = [
   {
     id: 1, cat: 'vinyl',
-    emoji: '🎸',
+    img: '/static/album_covers/The_Dark_Side_of_the_Moon_cover.png',
     name: 'Dark Side of the Moon',
     artist: 'Pink Floyd',
     genre: 'Класика',
@@ -20,6 +20,7 @@ const PRODUCTS = [
   {
     id: 2, cat: 'vinyl',
     emoji: '🎷',
+    img: '/static/album_covers/Miles_Davis_-_Kind_of_Blue_album_cover.jpg',
     name: 'Kind of Blue',
     artist: 'Miles Davis',
     genre: 'Джаз',
@@ -29,6 +30,7 @@ const PRODUCTS = [
   {
     id: 3, cat: 'vinyl',
     emoji: '🎹',
+    img: '/static/album_covers/The_Beatles_Abbey_Road_album_cover.jpg',
     name: 'Abbey Road',
     artist: 'The Beatles',
     genre: 'Рок',
@@ -38,6 +40,7 @@ const PRODUCTS = [
   {
     id: 4, cat: 'player',
     emoji: '📻',
+    img: '/static/album_covers/Audio-Technica_AT-LP120.jpg',
     name: 'Audio-Technica AT-LP120',
     artist: 'Програвач',
     genre: 'Програвач',
@@ -47,6 +50,7 @@ const PRODUCTS = [
   {
     id: 5, cat: 'vinyl',
     emoji: '🌿',
+    img: '/static/album_covers/FMacRumours.png',
     name: 'Rumours',
     artist: 'Fleetwood Mac',
     genre: 'Інді',
@@ -74,6 +78,7 @@ const PRODUCTS = [
   {
     id: 8, cat: 'vinyl',
     emoji: '🌙',
+    img: '/static/album_covers/Wee_small_hours_album_cover_high_definition.jpg',
     name: 'In the Wee Small Hours',
     artist: 'Frank Sinatra',
     genre: 'Джаз',
@@ -92,6 +97,7 @@ const PRODUCTS = [
   {
     id: 10, cat: 'player',
     emoji: '🔊',
+    img: '/static/album_covers/SEzBz7Q9R4dvxoKVwFcguQ-1920-80.jpg',
     name: 'Rega Planar 1',
     artist: 'Програвач',
     genre: 'Програвач',
@@ -110,6 +116,7 @@ const PRODUCTS = [
   {
     id: 12, cat: 'vinyl',
     emoji: '🎵',
+    img: '/static/album_covers/Bob_Dylan_-_Blonde_on_Blonde.jpg',
     name: 'Blonde on Blonde',
     artist: 'Bob Dylan',
     genre: 'Фолк',
@@ -156,8 +163,10 @@ const FAQS = [
 const BLOG_POSTS = [
   {
     emoji: '🎵',
+    img: '/static/album_covers/5880074815_808a4acf75_b.jpg',
     tag: 'Гід',
     title: 'Як вибрати перший вініловий програвач',
+    
     excerpt: 'Розповідаємо що шукати при покупці першого програвача, на що звернути увагу і яких помилок уникати.',
     date: '12 лист 2024',
     time: '7 хв'
@@ -165,6 +174,8 @@ const BLOG_POSTS = [
   {
     emoji: '🎸',
     tag: 'Музика',
+
+    img: '/static/album_covers/Indie_albums_HP.webp',
     title: '10 інді-альбомів, які варто мати на вінілі',
     excerpt: 'Від Phoebe Bridgers до Bon Iver — ці записи звучать так, як задумали автори: тепло, живо, об\'ємно.',
     date: '5 лист 2024',
@@ -173,6 +184,8 @@ const BLOG_POSTS = [
   {
     emoji: '🧹',
     tag: 'Поради',
+
+    img: '/static/album_covers/How-to-Take-Care-of-Vinyl-Records.jpg',
     title: 'Догляд за платівками: повне керівництво',
     excerpt: 'Чистка, зберігання, транспортування — все що потрібно знати, щоб ваша колекція жила десятиліттями.',
     date: '28 жовт 2024',
@@ -182,6 +195,7 @@ const BLOG_POSTS = [
     emoji: '📻',
     tag: 'Техніка',
     title: 'Pro-Ject vs Audio-Technica: що краще для дому?',
+    img: '/static/album_covers/TELEMMGLPICT000435374135_17549902599110_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.webp',
     excerpt: 'Детальне порівняння двох популярних брендів за якістю звуку, зручністю та ціною.',
     date: '15 жовт 2024',
     time: '8 хв'
@@ -189,6 +203,8 @@ const BLOG_POSTS = [
   {
     emoji: '🎷',
     tag: 'Музика',
+
+    img: '/static/album_covers/Louis_Armstrong_restored.jpg',
     title: 'Джаз на вінілі: куди почати слухати',
     excerpt: 'Список із 12 джазових альбомів для тих, хто хоче відкрити для себе цей жанр через аналоговий звук.',
     date: '3 жовт 2024',
@@ -197,6 +213,8 @@ const BLOG_POSTS = [
   {
     emoji: '💿',
     tag: 'Колекція',
+
+    img: '/static/album_covers/gallery-221013-mini-1.jpg',
     title: 'Як зберігати велику колекцію вінілу',
     excerpt: 'Стелажі, конверти, температура, вологість — практичні поради від досвідчених колекціонерів.',
     date: '20 вер 2024',
@@ -242,11 +260,11 @@ function renderProducts(filter = 'all') {
     ? PRODUCTS
     : PRODUCTS.filter(p => p.cat === filter);
 
-  grid.innerHTML = list.map(p => `
+grid.innerHTML = list.map(p => `
     <div class="product-card" data-cat="${p.cat}">
       <div class="product-img">
         ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-        ${p.emoji}
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">` : p.emoji}
       </div>
       <div class="product-info">
         <div class="product-genre">${p.genre}</div>
@@ -303,7 +321,9 @@ function toggleFaq(i) {
 function renderBlog() {
   document.getElementById('blogGrid').innerHTML = BLOG_POSTS.map(b => `
     <div class="blog-card">
-      <div class="blog-img">${b.emoji}</div>
+      <div class="blog-img">
+        ${b.img ? `<img src="${b.img}" alt="${b.title}" style="width:100%;height:100%;object-fit:cover;">` : b.emoji}
+      </div>
       <div class="blog-content">
         <div class="blog-tag">${b.tag}</div>
         <div class="blog-title">${b.title}</div>
